@@ -6,14 +6,16 @@ defineProps<{
 }>()
 
 const {selectCategory, searchProducts} = useProductsStore()
+const {selectedCategory} = storeToRefs(useProductsStore())
 
 async function getAllProducts() {
+  selectedCategory.value.name = "Все категории"
   await searchProducts(`category=`)
 }
 </script>
 
 <template>
-  <div class="flex flex-col items-start gap-3">
+  <div class="flex flex-col items-start gap-3 bg-white rounded-lg p-4">
     <button @click="getAllProducts" class="font-semibold">Все категории</button>
     <button
         class="font-semibold"

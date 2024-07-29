@@ -1,6 +1,10 @@
 import type {ICartItem} from "~/types/ICartItem";
+import {useToastStore} from "~/stores/toast";
 
 export const useCartStore = defineStore('cart', () => {
+
+    const toastStore = useToastStore()
+
     const cart = ref<ICartItem[]>([])
 
     const addToCart = (product: ICartItem): void => {
@@ -15,6 +19,7 @@ export const useCartStore = defineStore('cart', () => {
                 quantity: 1
             })
         }
+        toastStore.showToastMessage("Товар добавлен")
     }
 
     const removeFromCart = (product: ICartItem): void => {

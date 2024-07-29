@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import type {IProduct} from "~/types/IProduct";
 
-defineProps<{
-  products: IProduct[]
-}>()
+interface Props {
+  products: IProduct[],
+  isFavorites?: boolean
+}
+
+withDefaults(defineProps<Props>(), {
+  isFavorites: false
+})
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-8">
+  <div v-auto-animate class="grid grid-cols-3 gap-8">
     <ProductCard
         v-for="product in products"
         :key="product.id"
         :product="product"
+        :is-favorites="isFavorites"
     />
   </div>
 </template>

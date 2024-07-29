@@ -2,6 +2,7 @@
 import {LucideShoppingCart, Heart} from "lucide-vue-next";
 
 const {cart} = storeToRefs(useCartStore())
+const {favorites} = useFavoritesStore()
 </script>
 
 <template>
@@ -12,7 +13,10 @@ const {cart} = storeToRefs(useCartStore())
       </NuxtLink>
       <div class="flex items-center gap-4">
         <NuxtLink to="/favorites">
-            <Heart/>
+           <div class="flex items-center gap-2">
+             <span class="font-bold h-8 w-8 bg-pink-400 rounded-full flex items-center justify-center text-white">{{favorites.length}}</span>
+             <Heart/>
+           </div>
         </NuxtLink>
         <NuxtLink to="/cart">
           <div class="flex items-center gap-2">

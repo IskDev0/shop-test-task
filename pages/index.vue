@@ -43,11 +43,11 @@ onMounted(() => {
       </select>
     </div>
   </div>
-  <div class="flex justify-between pt-10">
-    <div class="w-1/3">
+  <div class="flex justify-between pt-10 gap-10">
+    <div class="w-1/4">
       <CategoriesSidebar :categories="categories"/>
     </div>
-    <div class="w-2/3">
+    <div class="w-3/4">
       <ProductsList v-if="products.length > 0" :products="filteredProducts"/>
       <div v-else>
         <p class="font-bold text-2xl">Товары не найдены</p>

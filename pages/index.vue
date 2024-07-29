@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const productsStore = useProductsStore()
-const {getProducts, searchProducts} = productsStore
-const {products, filteredProducts, categories} = storeToRefs(productsStore)
+const {getProducts, getCategories} = productsStore
+const {products, filteredProducts, categories, selectedCategory} = storeToRefs(productsStore)
 
 const sortType = ref<string>("all")
 
@@ -18,6 +18,11 @@ function sortProducts(): void {
     filteredProducts.value = products.value
   }
 }
+
+onMounted(() => {
+  getProducts()
+  getCategories()
+})
 </script>
 
 <template>
@@ -26,6 +31,7 @@ function sortProducts(): void {
     <span>
       <span class="font-semibold">Всего:</span> {{ products.length }} товаров
     </span>
+    <p class="text-xl font-bold">{{ selectedCategory.name }}</p>
     <div class="flex items-center gap-4">
       <p>Сортировать по:</p>
       <select @change="sortProducts" class="border py-2 px-4 rounded-lg" v-model="sortType">
@@ -42,7 +48,10 @@ function sortProducts(): void {
       <CategoriesSidebar :categories="categories"/>
     </div>
     <div class="w-2/3">
-      <ProductsList :products="filteredProducts"/>
+      <ProductsList v-if="products.length > 0" :products="filteredProducts"/>
+      <div v-else>
+        <p class="font-bold text-2xl">Товары не найдены</p>
+      </div>
     </div>
   </div>
 </template>

@@ -3,224 +3,14 @@ import type {ICategory} from "~/types/ICategory";
 
 export const useProductsStore = defineStore('products', () => {
 
-    const products = ref<IProduct[]>([
-        {
-            "id": 1,
-            "image": "https://via.placeholder.com/150",
-            "name": "Смартфон Samsung Galaxy S21",
-            "category": "Электроника",
-            "description": "Флагманский смартфон с экраном 6.2 дюйма, 8 ГБ ОЗУ, 128 ГБ ПЗУ.",
-            "price": 70000,
-            "orders": 5
-        },
-        {
-            "id": 2,
-            "image": "https://via.placeholder.com/150",
-            "name": "Ноутбук Apple MacBook Air",
-            "category": "Компьютеры",
-            "description": "Ультратонкий ноутбук с процессором M1, 8 ГБ ОЗУ, 256 ГБ SSD.",
-            "price": 100000,
-            "orders": 10
-        },
-        {
-            "id": 3,
-            "image": "https://via.placeholder.com/150",
-            "name": "Наушники Sony WH-1000XM4",
-            "category": "Аудио",
-            "description": "Беспроводные наушники с шумоподавлением и отличным качеством звука.",
-            "price": 25000,
-            "orders": 7
-        },
-        {
-            "id": 4,
-            "image": "https://via.placeholder.com/150",
-            "name": "Телевизор LG OLED55C1",
-            "category": "Бытовая техника",
-            "description": "55-дюймовый OLED телевизор с 4K разрешением и поддержкой HDR.",
-            "price": 120000,
-            "orders": 3
-        },
-        {
-            "id": 5,
-            "image": "https://via.placeholder.com/150",
-            "name": "Часы Apple Watch Series 6",
-            "category": "Гаджеты",
-            "description": "Смарт-часы с измерением уровня кислорода в крови и поддержкой EKG.",
-            "price": 40000,
-            "orders": 2
-        },
-        {
-            "id": 6,
-            "image": "https://via.placeholder.com/150",
-            "name": "Планшет Samsung Galaxy Tab S7",
-            "category": "Компьютеры",
-            "description": "Планшет с 11-дюймовым экраном, 6 ГБ ОЗУ, 128 ГБ ПЗУ и поддержкой S Pen.",
-            "price": 60000,
-            "orders": 6
-        },
-        {
-            "id": 7,
-            "image": "https://via.placeholder.com/150",
-            "name": "Смартфон iPhone 12",
-            "category": "Электроника",
-            "description": "Смартфон с экраном 6.1 дюйма, 4 ГБ ОЗУ, 64 ГБ ПЗУ.",
-            "price": 80000,
-            "orders": 4
-        },
-        {
-            "id": 8,
-            "image": "https://via.placeholder.com/150",
-            "name": "Кофеварка De'Longhi Magnifica",
-            "category": "Бытовая техника",
-            "description": "Эспрессо-кофемашина с функцией автоматического капучино и встроенной кофемолкой.",
-            "price": 45000,
-            "orders": 11
-        },
-        {
-            "id": 9,
-            "image": "https://via.placeholder.com/150",
-            "name": "Фитнес-трекер Xiaomi Mi Band 6",
-            "category": "Гаджеты",
-            "description": "Фитнес-браслет с измерением пульса, уровня кислорода в крови и водонепроницаемостью.",
-            "price": 5000,
-            "orders": 8
-        },
-        {
-            "id": 10,
-            "image": "https://via.placeholder.com/150",
-            "name": "Ноутбук Dell XPS 13",
-            "category": "Компьютеры",
-            "description": "Ультрабук с экраном 13.3 дюйма, процессором Intel Core i7, 16 ГБ ОЗУ, 512 ГБ SSD.",
-            "price": 120000,
-            "orders": 5
-        },
-        {
-            "id": 11,
-            "image": "https://via.placeholder.com/150",
-            "name": "Камера Canon EOS R5",
-            "category": "Фототехника",
-            "description": "Беззеркальная камера с 45-мегапиксельной матрицей и поддержкой 8K видео.",
-            "price": 80000,
-            "orders": 3
-        },
-        {
-            "id": 12,
-            "image": "https://via.placeholder.com/150",
-            "name": "Игровая консоль PlayStation 5",
-            "category": "Игровые приставки",
-            "description": "Игровая консоль нового поколения с поддержкой 4K HDR и SSD на 825 ГБ.",
-            "price": 60000,
-            "orders": 1
-        },
-        {
-            "id": 13,
-            "image": "https://via.placeholder.com/150",
-            "name": "Монитор LG UltraFine 27",
-            "category": "Компьютеры",
-            "description": "27-дюймовый 4K монитор с поддержкой HDR10 и USB-C.",
-            "price": 55000,
-            "orders": 9
-        },
-        {
-            "id": 14,
-            "image": "https://via.placeholder.com/150",
-            "name": "Робот-пылесос iRobot Roomba i7",
-            "category": "Бытовая техника",
-            "description": "Робот-пылесос с функцией автоматического опорожнения контейнера для мусора.",
-            "price": 50000,
-            "orders": 7
-        },
-        {
-            "id": 15,
-            "image": "https://via.placeholder.com/150",
-            "name": "Блендер Bosch SilentMixx",
-            "category": "Бытовая техника",
-            "description": "Тихий блендер с мощностью 700 Вт и стеклянным кувшином объемом 2 литра.",
-            "price": 8000,
-            "orders": 5
-        },
-        {
-            "id": 16,
-            "image": "https://via.placeholder.com/150",
-            "name": "Смартфон OnePlus 9",
-            "category": "Электроника",
-            "description": "Смартфон с экраном 6.55 дюйма, 8 ГБ ОЗУ, 128 ГБ ПЗУ и поддержкой 5G.",
-            "price": 70000,
-            "orders": 8
-        },
-        {
-            "id": 17,
-            "image": "https://via.placeholder.com/150",
-            "name": "Электросамокат Xiaomi Mi Electric Scooter",
-            "category": "Гаджеты",
-            "description": "Электросамокат с максимальной скоростью 25 км/ч и дальностью хода 30 км.",
-            "price": 30000,
-            "orders": 6
-        },
-        {
-            "id": 18,
-            "image": "https://via.placeholder.com/150",
-            "name": "Гарнитура Razer BlackShark V2",
-            "category": "Аудио",
-            "description": "Игровая гарнитура с микрофоном и системой шумоподавления.",
-            "price": 10000,
-            "orders": 2
-        },
-        {
-            "id": 19,
-            "image": "https://via.placeholder.com/150",
-            "name": "Фотоаппарат Fujifilm X-T4",
-            "category": "Фототехника",
-            "description": "Беззеркальная камера с матрицей 26 МП и стабилизацией изображения.",
-            "price": 180000,
-            "orders": 9
-        },
-        {
-            "id": 20,
-            "image": "https://via.placeholder.com/150",
-            "name": "Смарт-часы Garmin Fenix 6",
-            "category": "Гаджеты",
-            "description": "Смарт-часы для экстремальных видов спорта с GPS и измерением пульса.",
-            "price": 60000,
-            "orders": 10
-        }
-    ])
+    const products = ref<IProduct[]>([])
     const filteredProducts = ref<IProduct[]>(products.value)
-    const categories = ref<ICategory[]>([
-        {
-            id: 1,
-            name: "Электроника"
-        },
-        {
-            id: 2,
-            name: "Компьютеры"
-        },
-        {
-            id: 3,
-            name: "Аудио"
-        },
-        {
-            id: 4,
-            name: "Бытовая техника"
-        },
-        {
-            id: 5,
-            name: "Гаджеты"
-        },
-        {
-            id: 6,
-            name: "Фототехника"
-        },
-        {
-            id: 7,
-            name: "Игровые приставки"
-        }
-    ])
-    const selectedCategory = ref<ICategory>()
+    const categories = ref<ICategory[]>([])
+    const selectedCategory = ref<ICategory>({ id: 0, name: "Все катеории"})
 
     const getProducts = async (): Promise<void> => {
         try {
-            products.value = await $fetch("/products")
+            products.value = await $fetch("/api/products")
             filteredProducts.value = products.value
         } catch (error) {
             console.error(error)
@@ -229,7 +19,7 @@ export const useProductsStore = defineStore('products', () => {
 
     const searchProducts = async (query: string): Promise<void> => {
         try {
-            products.value = await $fetch(`/products?search=${query}`)
+            products.value = await $fetch(`/api/products?${query}`)
             filteredProducts.value = products.value
         } catch (error) {
             console.error(error)
@@ -238,14 +28,15 @@ export const useProductsStore = defineStore('products', () => {
 
     const getCategories = async (): Promise<void> => {
         try {
-            categories.value = await $fetch("/categories")
+            categories.value = await $fetch("/api/categories")
         } catch (error) {
             console.error(error)
         }
     }
 
-    const selectCategory = (category: ICategory): void => {
+    const selectCategory = async (category: ICategory): void => {
         selectedCategory.value = category
+        await searchProducts(`category=${selectedCategory.value.name}`)
     }
 
     return {

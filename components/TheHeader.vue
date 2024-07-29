@@ -24,6 +24,7 @@ const {favorites} = useFavoritesStore()
             <LucideShoppingCart/>
           </div>
         </NuxtLink>
+        <NuxtLink to="/orders">Заказы</NuxtLink>
       </div>
     </div>
   </header>

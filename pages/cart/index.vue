@@ -4,12 +4,17 @@ import {Trash, Minus, Plus} from "lucide-vue-next";
 const cartStore = useCartStore()
 const {cart} = storeToRefs(cartStore)
 const {incrementQuantity, decrementQuantity, removeFromCart} = cartStore
+const {addOrder} = useOrdersStore()
 
 const total = computed(() => {
   return cart.value.reduce((acc, item) => {
     return acc + item.price * item.quantity
   }, 0)
 })
+
+function createOrder(){
+    addOrder(cart.value, total.value, Date.now())
+}
 </script>
 
 <template>
@@ -51,7 +56,7 @@ const total = computed(() => {
     </div>
     <div class="flex items-center justify-end gap-8">
       <p class="text-right font-semibold text-2xl mt-8">К оплате {{ formatPrice(total) }} ₸</p>
-      <button class="bg-blue-400 rounded-lg text-white py-2 px-4 mt-8">Оплатить</button>
+      <button @click="createOrder" class="bg-blue-400 rounded-lg text-white py-2 px-4 mt-8">Оплатить</button>
     </div>
   </div>
   <p v-else class="text-3xl font-bold text-center pt-10">Корзина пуста</p>

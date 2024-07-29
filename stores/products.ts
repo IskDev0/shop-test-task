@@ -205,6 +205,7 @@ export const useProductsStore = defineStore('products', () => {
             "orders": 10
         }
     ])
+    const filteredProducts = ref<IProduct[]>(products.value)
     const categories = ref<ICategory[]>([
         {
             id: 1,
@@ -240,6 +241,16 @@ export const useProductsStore = defineStore('products', () => {
     const getProducts = async (): Promise<void> => {
         try {
             products.value = await $fetch("/products")
+            filteredProducts.value = products.value
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const searchProducts = async (query: string): Promise<void> => {
+        try {
+            products.value = await $fetch(`/products?search=${query}`)
+            filteredProducts.value = products.value
         } catch (error) {
             console.error(error)
         }
@@ -259,9 +270,11 @@ export const useProductsStore = defineStore('products', () => {
 
     return {
         products,
+        filteredProducts,
         categories,
         selectedCategory,
         getProducts,
+        searchProducts,
         getCategories,
         selectCategory
     }

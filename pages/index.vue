@@ -1,17 +1,48 @@
 <script setup lang="ts">
 const productsStore = useProductsStore()
-const {getProducts} = productsStore
-const {products, categories} = storeToRefs(productsStore)
+const {getProducts, searchProducts} = productsStore
+const {products, filteredProducts, categories} = storeToRefs(productsStore)
 
+const sortType = ref<string>("all")
+
+function sortProducts(): void {
+  if (sortType.value === "price-asc") {
+    filteredProducts.value.sort((a, b) => a.price - b.price)
+  } else if (sortType.value === "price-desc") {
+    filteredProducts.value.sort((a, b) => b.price - a.price)
+  } else if (sortType.value === "orders-asc") {
+    filteredProducts.value.sort((a, b) => a.orders - b.orders)
+  } else if (sortType.value === "orders-desc") {
+    filteredProducts.value.sort((a, b) => b.orders - a.orders)
+  } else {
+    filteredProducts.value = products.value
+  }
+}
 </script>
 
 <template>
-<div class="flex justify-between pt-10">
-  <div class="w-1/3">
-    <CategoriesSidebar :categories="categories"/>
+  <ProductsSearch/>
+  <div class="flex items-center justify-between mt-6">
+    <span>
+      <span class="font-semibold">Всего:</span> {{ products.length }} товаров
+    </span>
+    <div class="flex items-center gap-4">
+      <p>Сортировать по:</p>
+      <select @change="sortProducts" class="border py-2 px-4 rounded-lg" v-model="sortType">
+        <option value="all">Все</option>
+        <option value="price-desc">Цена (от большего к меньшему)</option>
+        <option value="price-asc">Цена (от меньшего к большему)</option>
+        <option value="orders-desc">Заказы (от большего к меньшему)</option>
+        <option value="orders-asc">Заказы (от меньшего к большему)</option>
+      </select>
+    </div>
   </div>
-  <div class="w-2/3">
-    <ProductsList :products="products"/>
+  <div class="flex justify-between pt-10">
+    <div class="w-1/3">
+      <CategoriesSidebar :categories="categories"/>
+    </div>
+    <div class="w-2/3">
+      <ProductsList :products="filteredProducts"/>
+    </div>
   </div>
-</div>
 </template>

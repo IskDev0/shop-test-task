@@ -2,10 +2,14 @@
 import type {IProduct} from "~/types/IProduct";
 import formatPrice from "../utils/formatPrice";
 import {LucideHeart, LucideShoppingCart} from "lucide-vue-next";
+import {useCartStore} from "~/stores/cart";
 
 defineProps<{
   product: IProduct
 }>()
+
+const cartStore = useCartStore()
+const {addToCart} = cartStore
 
 const isHovered = ref<boolean>(false)
 </script>
@@ -21,7 +25,7 @@ const isHovered = ref<boolean>(false)
            class="absolute top-0 left-0 right-0 flex items-center justify-center bg-black bg-opacity-30 h-full w-full">
         <div class="flex items-center gap-8">
           <LucideHeart class="cursor-pointer hover"/>
-          <LucideShoppingCart class="cursor-pointer hover"/>
+          <LucideShoppingCart @click="addToCart(product)" class="cursor-pointer hover"/>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {LucideShoppingCart} from "lucide-vue-next";
 
+const {cart} = storeToRefs(useCartStore())
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import {LucideShoppingCart} from "lucide-vue-next";
       </NuxtLink>
       <NuxtLink to="/cart">
         <div class="flex items-center gap-2">
-          <span class="font-bold">10</span>
+          <span class="font-bold">{{cart.length}}</span>
           <LucideShoppingCart/>
         </div>
       </NuxtLink>

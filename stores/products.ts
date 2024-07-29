@@ -11,7 +11,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Электроника",
             "description": "Флагманский смартфон с экраном 6.2 дюйма, 8 ГБ ОЗУ, 128 ГБ ПЗУ.",
             "price": 70000,
-            "quantity": 10,
             "orders": 5
         },
         {
@@ -21,7 +20,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Компьютеры",
             "description": "Ультратонкий ноутбук с процессором M1, 8 ГБ ОЗУ, 256 ГБ SSD.",
             "price": 100000,
-            "quantity": 20,
             "orders": 10
         },
         {
@@ -31,7 +29,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Аудио",
             "description": "Беспроводные наушники с шумоподавлением и отличным качеством звука.",
             "price": 25000,
-            "quantity": 15,
             "orders": 7
         },
         {
@@ -41,7 +38,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Бытовая техника",
             "description": "55-дюймовый OLED телевизор с 4K разрешением и поддержкой HDR.",
             "price": 120000,
-            "quantity": 5,
             "orders": 3
         },
         {
@@ -51,7 +47,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Гаджеты",
             "description": "Смарт-часы с измерением уровня кислорода в крови и поддержкой EKG.",
             "price": 40000,
-            "quantity": 8,
             "orders": 2
         },
         {
@@ -61,7 +56,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Компьютеры",
             "description": "Планшет с 11-дюймовым экраном, 6 ГБ ОЗУ, 128 ГБ ПЗУ и поддержкой S Pen.",
             "price": 60000,
-            "quantity": 12,
             "orders": 6
         },
         {
@@ -71,7 +65,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Электроника",
             "description": "Смартфон с экраном 6.1 дюйма, 4 ГБ ОЗУ, 64 ГБ ПЗУ.",
             "price": 80000,
-            "quantity": 20,
             "orders": 4
         },
         {
@@ -81,7 +74,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Бытовая техника",
             "description": "Эспрессо-кофемашина с функцией автоматического капучино и встроенной кофемолкой.",
             "price": 45000,
-            "quantity": 9,
             "orders": 11
         },
         {
@@ -91,7 +83,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Гаджеты",
             "description": "Фитнес-браслет с измерением пульса, уровня кислорода в крови и водонепроницаемостью.",
             "price": 5000,
-            "quantity": 10,
             "orders": 8
         },
         {
@@ -101,7 +92,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Компьютеры",
             "description": "Ультрабук с экраном 13.3 дюйма, процессором Intel Core i7, 16 ГБ ОЗУ, 512 ГБ SSD.",
             "price": 120000,
-            "quantity": 7,
             "orders": 5
         },
         {
@@ -110,8 +100,7 @@ export const useProductsStore = defineStore('products', () => {
             "name": "Камера Canon EOS R5",
             "category": "Фототехника",
             "description": "Беззеркальная камера с 45-мегапиксельной матрицей и поддержкой 8K видео.",
-            "price": 350000,
-            "quantity": 8,
+            "price": 80000,
             "orders": 3
         },
         {
@@ -121,7 +110,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Игровые приставки",
             "description": "Игровая консоль нового поколения с поддержкой 4K HDR и SSD на 825 ГБ.",
             "price": 60000,
-            "quantity": 4,
             "orders": 1
         },
         {
@@ -131,7 +119,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Компьютеры",
             "description": "27-дюймовый 4K монитор с поддержкой HDR10 и USB-C.",
             "price": 55000,
-            "quantity": 6,
             "orders": 9
         },
         {
@@ -141,7 +128,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Бытовая техника",
             "description": "Робот-пылесос с функцией автоматического опорожнения контейнера для мусора.",
             "price": 50000,
-            "quantity": 15,
             "orders": 7
         },
         {
@@ -151,7 +137,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Бытовая техника",
             "description": "Тихий блендер с мощностью 700 Вт и стеклянным кувшином объемом 2 литра.",
             "price": 8000,
-            "quantity": 20,
             "orders": 5
         },
         {
@@ -161,7 +146,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Электроника",
             "description": "Смартфон с экраном 6.55 дюйма, 8 ГБ ОЗУ, 128 ГБ ПЗУ и поддержкой 5G.",
             "price": 70000,
-            "quantity": 10,
             "orders": 8
         },
         {
@@ -171,7 +155,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Гаджеты",
             "description": "Электросамокат с максимальной скоростью 25 км/ч и дальностью хода 30 км.",
             "price": 30000,
-            "quantity": 9,
             "orders": 6
         },
         {
@@ -181,7 +164,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Аудио",
             "description": "Игровая гарнитура с микрофоном и системой шумоподавления.",
             "price": 10000,
-            "quantity": 4,
             "orders": 2
         },
         {
@@ -191,7 +173,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Фототехника",
             "description": "Беззеркальная камера с матрицей 26 МП и стабилизацией изображения.",
             "price": 180000,
-            "quantity": 7,
             "orders": 9
         },
         {
@@ -201,7 +182,6 @@ export const useProductsStore = defineStore('products', () => {
             "category": "Гаджеты",
             "description": "Смарт-часы для экстремальных видов спорта с GPS и измерением пульса.",
             "price": 60000,
-            "quantity": 6,
             "orders": 10
         }
     ])

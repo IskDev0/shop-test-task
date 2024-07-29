@@ -8,8 +8,8 @@ defineProps<{
   product: IProduct
 }>()
 
-const cartStore = useCartStore()
-const {addToCart} = cartStore
+const {addToCart} = useCartStore()
+const {addToFavorites} = useFavoritesStore()
 
 const isHovered = ref<boolean>(false)
 </script>
@@ -24,7 +24,7 @@ const isHovered = ref<boolean>(false)
       <div :class="{'hidden' : !isHovered}"
            class="absolute top-0 left-0 right-0 flex items-center justify-center bg-black bg-opacity-30 h-full w-full">
         <div class="flex items-center gap-8">
-          <LucideHeart class="cursor-pointer hover"/>
+          <LucideHeart @click="addToFavorites(product)" class="cursor-pointer hover"/>
           <LucideShoppingCart @click="addToCart(product)" class="cursor-pointer hover"/>
         </div>
       </div>
@@ -32,7 +32,6 @@ const isHovered = ref<boolean>(false)
     <h3 class="text-xl font-bold">{{ product.name }}</h3>
     <p class="bg-blue-400 rounded-full px-2 text-white">{{ product.category }}</p>
     <p class="text-gray-500">{{ product.description }}</p>
-    <NuxtLink class="self-end py-2 px-4 mt-4 bg-blue-500 text-white rounded-lg">{{ formatPrice(product.price) }} ₸
-    </NuxtLink>
+    <button @click="addToCart(product)" class="self-end py-2 px-4 mt-4 bg-blue-500 text-white rounded-lg">{{ formatPrice(product.price) }} ₸</button>
   </article>
 </template>

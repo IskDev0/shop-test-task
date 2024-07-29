@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {LucideShoppingCart} from "lucide-vue-next";
+import {LucideShoppingCart, Heart} from "lucide-vue-next";
 
 const {cart} = storeToRefs(useCartStore())
 </script>
@@ -10,12 +10,17 @@ const {cart} = storeToRefs(useCartStore())
       <NuxtLink to="/">
         <img src="/logo.svg" alt="logo">
       </NuxtLink>
-      <NuxtLink to="/cart">
-        <div class="flex items-center gap-2">
-          <span class="font-bold">{{cart.length}}</span>
-          <LucideShoppingCart/>
-        </div>
-      </NuxtLink>
+      <div class="flex items-center gap-4">
+        <NuxtLink to="/favorites">
+            <Heart/>
+        </NuxtLink>
+        <NuxtLink to="/cart">
+          <div class="flex items-center gap-2">
+            <span class="font-bold h-8 w-8 bg-blue-400 rounded-full flex items-center justify-center text-white">{{cart.length}}</span>
+            <LucideShoppingCart/>
+          </div>
+        </NuxtLink>
+      </div>
     </div>
   </header>
 </template>

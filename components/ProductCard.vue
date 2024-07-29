@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import type {IProduct} from "~/types/IProduct";
+import formatPrice from "../utils/formatPrice";
+import {LucideHeart, LucideShoppingCart} from "lucide-vue-next";
+
+defineProps<{
+  product: IProduct
+}>()
+
+const isHovered = ref<boolean>(false)
+</script>
+
+<template>
+  <article class="flex flex-col items-start gap-2">
+    <div
+        @mouseenter="isHovered = true"
+        @mouseleave="isHovered = false"
+        class="relative w-full">
+      <img class="w-full" :src="product.image" :alt="product.name">
+      <div :class="{'hidden' : !isHovered}"
+           class="absolute top-0 left-0 right-0 flex items-center justify-center bg-black bg-opacity-30 h-full w-full">
+        <div class="flex items-center gap-8">
+          <LucideHeart class="cursor-pointer hover"/>
+          <LucideShoppingCart class="cursor-pointer hover"/>
+        </div>
+      </div>
+    </div>
+    <h3 class="text-xl font-bold">{{ product.name }}</h3>
+    <p class="bg-blue-400 rounded-full px-2 text-white">{{ product.category }}</p>
+    <p class="text-gray-500">{{ product.description }}</p>
+    <NuxtLink class="self-end py-2 px-4 mt-4 bg-blue-500 text-white rounded-lg">{{ formatPrice(product.price) }} ₸
+    </NuxtLink>
+  </article>
+</template>

@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import type {IProduct} from "~/types/IProduct";
 import formatPrice from "../utils/formatPrice";
-import {LucideHeart, LucideShoppingCart, LucideHeartOff} from "lucide-vue-next";
+import {LucideHeart, LucideShoppingCart} from "lucide-vue-next";
 import {useCartStore} from "~/stores/cart";
 
 defineProps<{
   product: IProduct,
-  isFavorites?: boolean
 }>()
 
 const {addToCart} = useCartStore()
-const {addToFavorites, removeFromFavorites} = useFavoritesStore()
+const {addToFavorites, removeFromFavorites, isProductInFavorites} = useFavoritesStore()
 
 const isHovered = ref<boolean>(false)
 </script>
@@ -24,12 +23,16 @@ const isHovered = ref<boolean>(false)
       <img class="w-full" :src="product.image" :alt="product.name">
       <div :class="{'hidden' : !isHovered}"
            class="absolute top-0 left-0 right-0 flex items-center justify-center bg-black bg-opacity-30 h-full w-full">
-        <div v-if="!isFavorites" class="flex items-center gap-8">
+        <div v-if="!isProductInFavorites(product)" class="flex items-center gap-8">
           <LucideHeart @click="addToFavorites(product)" class="cursor-pointer hover"/>
           <LucideShoppingCart @click="addToCart(product)" class="cursor-pointer hover"/>
         </div>
         <div v-else class="flex items-center gap-8">
-          <LucideHeartOff @click="removeFromFavorites(product)" class="cursor-pointer hover"/>
+          <LucideHeart
+              :fill="isProductInFavorites(product) ? '#dc2626' : ''"
+              @click="removeFromFavorites(product)"
+              :class="isProductInFavorites(product) ? 'text-red-600' : ''"
+              class="cursor-pointer hover"/>
           <LucideShoppingCart @click="addToCart(product)" class="cursor-pointer hover"/>
         </div>
       </div>

@@ -18,10 +18,15 @@ export const useFavoritesStore = defineStore('favorites', () => {
         favorites.value = favorites.value.filter(item => item.id !== product.id)
     }
 
+    const isProductInFavorites = (product:IProduct):boolean => {
+        return favorites.value.includes(product)
+    }
+
     return {
         favorites,
         addToFavorites,
-        removeFromFavorites
+        removeFromFavorites,
+        isProductInFavorites
     }
 
 })

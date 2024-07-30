@@ -2,6 +2,7 @@
 import {Trash, Minus, Plus} from "lucide-vue-next";
 
 const cartStore = useCartStore()
+const toastStore = useToastStore()
 const {cart} = storeToRefs(cartStore)
 const {incrementQuantity, decrementQuantity, removeFromCart} = cartStore
 const {addOrder} = useOrdersStore()
@@ -12,14 +13,15 @@ const total = computed(() => {
   }, 0)
 })
 
-function createOrder(){
-    addOrder(cart.value, total.value, Date.now())
+function createOrder() {
+  addOrder(cart.value, total.value, Date.now())
+  toastStore.showToastMessage("Заказ создан")
 }
 </script>
 
 <template>
   <h1 class="text-3xl font-bold mb-10 mt-4">Корзина</h1>
-  <div v-if="cart.length > 0">
+  <div class="bg-white p-4 rounded-lg" v-if="cart.length > 0">
     <div class="grid grid-cols-6 items-center gap-4 text-gray-500 mb-2">
       <p>Фото</p>
       <p>Название</p>
@@ -31,7 +33,7 @@ function createOrder(){
     <div v-auto-animate>
       <div
           class="grid grid-cols-6 items-center gap-4"
-          :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-white'"
+          :class="index % 2 === 0 ? 'border-b' : ''"
           v-for="(item, index) in cart"
           :key="item.id">
         <img class="w-16 -16" :src="item.image" alt="">

@@ -2,7 +2,7 @@
 import {LucideShoppingCart, Heart} from "lucide-vue-next";
 
 const {cart} = storeToRefs(useCartStore())
-const {favorites} = useFavoritesStore()
+const {favorites} = storeToRefs(useFavoritesStore())
 </script>
 
 <template>
